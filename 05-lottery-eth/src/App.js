@@ -56,6 +56,19 @@ class App extends Component {
     //卸载钩子函数
     // componentDidMount
 
+    play = async () => {
+        try {
+            await lotteryInstance.methods.play().send({
+                from: this.state.currentAccount,
+                value: web3.utils.toWei('1', 'ether'),
+                gas: '3000000'
+            })
+            alert('投注成功！')
+        } catch (e) {
+            alert('投注失败！')
+            console.log(e)
+        }
+    }
 
     render() {
 
